@@ -1,6 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import styled from "styled-components";
+
+const Peragraph = styled.p`
+  font-size: 2em;
+`;
+
+const Input = styled.input`
+  padding: 1em;
+  border-radius: 10px;
+  width: 280px;
+`;
 
 export default function Register() {
   const { register, reset, handleSubmit } = useForm();
@@ -24,54 +35,86 @@ export default function Register() {
     <>
       <section>
         <main>
-          <div className="section-regristration">
-            <div className="container grid grid-two-cols">
-              <div className="registration-image">
-                <img src="" alt="image" width="500" height="500" />
-              </div>
-              <div className="registration-form">
-                <h1 className="mian-heading mb-3">
+          <div
+            style={{
+              display: "block",
+              margin: "0 auto",
+              padding: "50px",
+              boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+              width: "500px",
+              borderRadius: "50px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <h1
+                  style={{
+                    fontSize: "40px",
+                    fontFamily: "sans-serif",
+                    color: "purple",
+                  }}
+                >
                   Regristration Form
                 </h1>
                 <br />
-                <form onSubmit={handleSubmit(mysubmit)}>
-                  <div>
-                    <label htmlFor="username">username</label>
-                    <input
-                      {...register("username", { required: true })}
-                      type="text"
-                      placeholder="Enter your username"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email">email</label>
-                    <input
-                      {...register("email", { required: true })}
-                      type="email"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="Phone_Number">Phone_Number</label>
-                    <input
-                      {...register("Phone_Number", {
-                        required: true,
-                      })}
-                      type="number"
-                      placeholder="Enter your Phone_Number"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="password">password</label>
-                    <input
-                      {...register("password", { required: true })}
-                      type="password"
-                      placeholder="Enter your password"
-                      required
-                    />
-                  </div>
+                <form
+                  style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                  onSubmit={handleSubmit(mysubmit)}
+                >
+                  <Peragraph>username</Peragraph>
+                  <Input
+                    {...register("username", { required: true })}
+                    type="text"
+                    placeholder="Enter your username"
+                  />
+
+                  <Peragraph>email</Peragraph>
+                  <Input
+                    {...register("email", { required: true })}
+                    type="email"
+                    placeholder="Enter your email"
+                  />
+
+                  <Peragraph>Phone_Number</Peragraph>
+                  <Input
+                    {...register("Phone_Number", {
+                      required: true,
+                    })}
+                    type="number"
+                    placeholder="Enter your Phone_Number"
+                  />
+
+                  <Peragraph>password</Peragraph>
+                  <Input
+                    {...register("password", { required: true })}
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+
                   <br />
-                  <button type="submit" className="btn btn-submit">
+                  <button
+                    style={{
+                      padding: "10px",
+                      borderRadius: "5px",
+                      border: "none",
+                      background: "purple",
+                      color: "white",
+                    }}
+                    type="submit"
+                    className="btn btn-submit"
+                  >
                     Register Now
                   </button>
                 </form>

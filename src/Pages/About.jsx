@@ -1,11 +1,9 @@
 import React from "react";
- 
 
 export default function About() {
   return (
     <>
-      <h1>Hello I'm your about page</h1>
-      
+      <h1>Be original ✌️ let the copy world at you💕😊</h1>
     </>
   );
 }
