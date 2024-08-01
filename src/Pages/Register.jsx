@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 const Peragraph = styled.p`
-  font-size: 2em;
+  font-size: 20px;
 `;
 
 const Input = styled.input`

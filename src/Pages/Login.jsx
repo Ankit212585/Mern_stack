@@ -26,9 +26,9 @@ export default function Register() {
       );
       console.log(myuser.data);
       setUser((predata) => [...predata, myuser.data]);
+      reset();
     } catch (err) {
       console.log(err);
-      reset();
     }
   };
   return (
