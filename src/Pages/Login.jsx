@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Peragraph = styled.p`
   font-size: 2em;
@@ -18,19 +19,25 @@ export default function Register() {
 
   const [user, setUser] = useState([]);
 
+  const navigate = useNavigate();
+
   const mysubmit = async (data) => {
     try {
-      const myuser = await axios.post(
-        "http://localhost:5000/api/auth/register",
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
         data
       );
-      console.log(myuser.data);
-      setUser((predata) => [...predata, myuser.data]);
+      console.log(response.data);
+
+      setUser((predata) => [...predata, response.data]);
       reset();
+      navigate("/Home");
     } catch (err) {
       console.log(err);
+      alert("An error occurred");
     }
   };
+
   return (
     <>
       <section>

@@ -7,22 +7,12 @@ export default function Navbar() {
       <header>
         <div className="container">
           <div className="logo-brand">
-            <a href="#">Panwar</a>
+            <a style={{ fontSize: "24px" }} href="#">
+              Panwar_jii
+            </a>
           </div>
           <nav>
             <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/Contact"> Contact</Link>
-              </li>
-              <li>
-                <Link to="/Service">Service</Link>
-              </li>
               <li>
                 <Link to="/Register">Register</Link>
               </li>

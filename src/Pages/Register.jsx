@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Peragraph = styled.p`
   font-size: 20px;
@@ -17,6 +18,7 @@ export default function Register() {
   const { register, reset, handleSubmit } = useForm();
 
   const [user, setUser] = useState([]);
+  const navigate = useNavigate();
 
   const mysubmit = async (data) => {
     try {
@@ -26,6 +28,7 @@ export default function Register() {
       );
       console.log(myuser.data);
       setUser((predata) => [...predata, myuser.data]);
+      navigate("/login");
     } catch (err) {
       console.log(err);
       reset();
