@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+
+import { AuthContext } from "../store/contexHook";
 export default function Navbar() {
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
       <header>
@@ -13,12 +16,20 @@ export default function Navbar() {
           </div>
           <nav>
             <ul>
-              <li>
-                <Link to="/Register">Register</Link>
-              </li>
-              <li>
-                <Link to="/Login">Login</Link>
-              </li>
+              {loggedIn ? (
+                <li>
+                  <Link to="/contact">Logout</Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/Register">Register</Link>
+                  </li>
+                  <li>
+                    <Link to="/Login">Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>

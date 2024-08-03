@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../store/contexHook";
 const Peragraph = styled.p`
   font-size: 2em;
 `;
@@ -17,6 +17,9 @@ const Input = styled.input`
 export default function Register() {
   const { register, reset, handleSubmit } = useForm();
 
+  // useContext
+
+  const { storeToken } = useContext(AuthContext);
   const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
@@ -28,9 +31,10 @@ export default function Register() {
         data
       );
       console.log(response.data);
-
       setUser((predata) => [...predata, response.data]);
+      storeToken(response.data.token);
       reset();
+      alert("you Login successfully");
       navigate("/Home");
     } catch (err) {
       console.log(err);

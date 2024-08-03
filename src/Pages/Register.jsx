@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../store/contexHook";
 
 const Peragraph = styled.p`
   font-size: 20px;
@@ -17,6 +18,9 @@ const Input = styled.input`
 export default function Register() {
   const { register, reset, handleSubmit } = useForm();
 
+  // useContext
+  const { storeToken } = useContext(AuthContext);
+
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
@@ -27,11 +31,16 @@ export default function Register() {
         data
       );
       console.log(myuser.data);
+
       setUser((predata) => [...predata, myuser.data]);
+      // storeToken(myuser.data.token);
+      alert("your Register successfully");
+
       navigate("/login");
     } catch (err) {
       console.log(err);
       reset();
+      alert("Invalid Register");
     }
   };
   return (
