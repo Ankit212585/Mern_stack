@@ -17,9 +17,14 @@ export default function Navbar() {
           <nav>
             <ul>
               {loggedIn ? (
-                <li>
-                  <Link to="/contact">Logout</Link>
-                </li>
+                <>
+                  <li>
+                    <Link to="/Contactpage">Contact Us</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Logout</Link>
+                  </li>
+                </>
               ) : (
                 <>
                   <li>

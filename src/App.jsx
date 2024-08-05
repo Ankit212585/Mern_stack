@@ -5,12 +5,14 @@ import {
   Route,
 } from "react-router-dom";
 import Home from "./Pages/Home";
-import About from "./Pages/About";
+import Homepage from "./Pages/Homepage";
 import Contact from "./Pages/Contact";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+
 import Navbar from "./Components/Navbar";
 import PageError from "./Pages/404page";
+import Contactpage from "./Pages/Contactpage";
 import { AuthContext } from "./store/contexHook";
 import axios from "axios";
 
@@ -43,7 +45,7 @@ function App() {
         }
       );
       setMydata(user.data);
-      // console.log(user.data);
+      console.log(user.data);
     } catch (err) {
       console.log(err);
     }
@@ -59,11 +61,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          {/* <Route path="/Contactpage" element={<Contactpage />} /> */}
           <Route path="/Home" element={<Home />} />
-          <Route path="/" element={<About />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/Contactpage" element={<Contactpage />} />
 
           <Route path="/*" element={<PageError />} />
         </Routes>
