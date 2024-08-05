@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,10 +12,13 @@ import Login from "./Pages/Login";
 import Navbar from "./Components/Navbar";
 import PageError from "./Pages/404page";
 import { AuthContext } from "./store/contexHook";
+import axios from "axios";
 
 function App() {
+  // store token in local storage
   const [token, setToken] = useState(localStorage.getItem("token"));
-  // all functions
+  const [mydata, setMydata] = useState([]);
+
   const storeToken = (servertoken) => {
     return localStorage.setItem("token", servertoken);
   };
@@ -27,8 +30,32 @@ function App() {
     return localStorage.removeItem("token");
   };
 
+  // JWT token Authantication currently logged user data
+
+  const userAuthantication = async () => {
+    try {
+      const user = await axios.get(
+        "http://localhost:5000/api/auth/get",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMydata(user.data);
+      // console.log(user.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    userAuthantication();
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ loggedIn, storeToken, logout }}>
+    <AuthContext.Provider
+      value={{ loggedIn, storeToken, logout, mydata }}
+    >
       <Router>
         <Navbar />
         <Routes>

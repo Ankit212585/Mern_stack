@@ -30,7 +30,6 @@ export default function Register() {
         "http://localhost:5000/api/auth/login",
         data
       );
-      console.log(response.data);
       setUser((predata) => [...predata, response.data]);
       storeToken(response.data.token);
       reset();
