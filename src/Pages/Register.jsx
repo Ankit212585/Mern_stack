@@ -36,7 +36,7 @@ export default function Register() {
       // storeToken(myuser.data.token);
       alert("your Register successfully");
 
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       console.log(err);
       reset();
@@ -103,8 +103,10 @@ export default function Register() {
                     {...register("Phone_Number", {
                       required: true,
                     })}
-                    type="number"
+                    type="text"
                     placeholder="Enter your Phone_Number"
+                    min={10}
+                    max={10}
                   />
 
                   <Peragraph>password</Peragraph>

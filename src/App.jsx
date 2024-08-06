@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home";
 import Homepage from "./Pages/Homepage";
+import AboutUsPage from "./Pages/AboutUsPage";
 import Contact from "./Pages/Contact";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-
+import Service from "./Pages/Service";
 import Navbar from "./Components/Navbar";
 import PageError from "./Pages/404page";
 import Contactpage from "./Pages/Contactpage";
@@ -22,6 +23,7 @@ function App() {
   const [mydata, setMydata] = useState([]);
 
   const storeToken = (servertoken) => {
+    setToken(servertoken);
     return localStorage.setItem("token", servertoken);
   };
 
@@ -29,6 +31,7 @@ function App() {
 
   const logout = () => {
     setToken("");
+    alert("Your logout successfully");
     return localStorage.removeItem("token");
   };
 
@@ -63,12 +66,13 @@ function App() {
         <Routes>
           {/* <Route path="/Contactpage" element={<Contactpage />} /> */}
           <Route path="/Home" element={<Home />} />
-          <Route path="/" element={<Homepage />} />
+          <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Contactpage" element={<Contactpage />} />
-
+          <Route path="/Service" element={<Service />} />
+          <Route path="/AboutUsPage" element={<AboutUsPage />} />
           <Route path="/*" element={<PageError />} />
         </Routes>
       </Router>

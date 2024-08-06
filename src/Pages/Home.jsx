@@ -18,10 +18,16 @@ export default function Home() {
           fontFamily: "sans-serif",
         }}
       >
-        Welcome mere baache tra he intzaar tha muje😁😁
+        छीन टपाक ढम ढम 😭😂😂
       </h1>
       <ul>
-        <center>
+        <center
+          style={{
+            display: "block",
+            margin: "0 auto",
+            paddingTop: "50px",
+          }}
+        >
           <li>{mydata.username}</li>
           <li>{mydata.email}</li>
           <li>{mydata.Phone_Number}</li>

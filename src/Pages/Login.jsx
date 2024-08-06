@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/contexHook";
+
 const Peragraph = styled.p`
   font-size: 2em;
 `;

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import axios from "axios";
+import { AuthContext } from "../store/contexHook";
 
 // Here is my css
 const Peragraph = styled.p`
@@ -18,6 +19,7 @@ export default function Contactpage() {
   const { register, reset, handleSubmit } = useForm();
 
   // useContext
+  const { mydata } = useContext(AuthContext);
   const [user, setUser] = useState([]);
 
   const mysubmit = async (data) => {
