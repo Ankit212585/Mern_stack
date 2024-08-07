@@ -16,11 +16,15 @@ import PageError from "./Pages/404page";
 import Contactpage from "./Pages/Contactpage";
 import { AuthContext } from "./store/contexHook";
 import axios from "axios";
+import Admin_layouts from "./Components/layouts/admin_layouts";
+import AdminContact from "./Components/layouts/adminContact";
+import AdminUser from "./Components/layouts/adminUser";
 
 function App() {
   // store token in local storage
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [mydata, setMydata] = useState([]);
+  const authorization = `Bearer ${token}`;
 
   const storeToken = (servertoken) => {
     setToken(servertoken);
@@ -43,7 +47,7 @@ function App() {
         "http://localhost:5000/api/auth/get",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: authorization,
           },
         }
       );
@@ -59,7 +63,7 @@ function App() {
 
   return (
     <AuthContext.Provider
-      value={{ loggedIn, storeToken, logout, mydata }}
+      value={{ loggedIn, storeToken, logout, mydata, authorization }}
     >
       <Router>
         <Navbar />
@@ -74,6 +78,12 @@ function App() {
           <Route path="/Service" element={<Service />} />
           <Route path="/AboutUsPage" element={<AboutUsPage />} />
           <Route path="/*" element={<PageError />} />
+
+          {/* Nested Routes for Admin pannel */}
+          <Route path="/admin" element={<Admin_layouts />}>
+            <Route path="users" element={<AdminUser />} />
+            <Route path="contacts" element={<AdminContact />} />
+          </Route>
         </Routes>
       </Router>
     </AuthContext.Provider>
