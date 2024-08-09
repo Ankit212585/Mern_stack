@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <>
       <header>
-        <div className="container">
+        <div style={{ flexWrap: "wrap" }} className="container">
           <div className="logo-brand">
             <a style={{ fontSize: "24px" }} href="#">
               <img
@@ -26,9 +26,6 @@ export default function Navbar() {
               <>
                 <Box style={{ margin: "50px" }}>
                   <ul>
-                    {/* <Link to="/admin">
-                      <li>Home</li>
-                    </Link> */}
                     <Link to="/admin/users">
                       <li>users</li>
                     </Link>
@@ -51,10 +48,10 @@ export default function Navbar() {
                     </li>
 
                     <li>
-                      <Link to="/AboutUsPage">About Us</Link>
+                      <Link to="/AboutUsPage">About</Link>
                     </li>
                     <li>
-                      <Link to="/Contactpage">Contact Us</Link>
+                      <Link to="/Contactpage">Contact</Link>
                     </li>
                     <li>
                       <Link to="/Service">Service</Link>
