@@ -29,7 +29,7 @@ export default function Register() {
   const mysubmit = async (data) => {
     try {
       const response = await axios.post(
-        "https://mern-stack-backend-delta.vercel.app/",
+        "http://localhost:5000/api/auth/login",
         data
       );
       setUser((predata) => [...predata, response.data]);
