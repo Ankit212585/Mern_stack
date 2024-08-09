@@ -6,13 +6,14 @@ import { AuthContext } from "../store/contexHook";
 
 // Here is my css
 const Peragraph = styled.p`
-  font-size: 2em;
+  font-size: 1em;
 `;
 
 const Input = styled.input`
-  padding: 1em;
+  padding: 10px;
   border-radius: 10px;
   width: 280px;
+  border: 1px solid black;
 `;
 
 export default function Contactpage() {
@@ -45,9 +46,9 @@ export default function Contactpage() {
             style={{
               display: "block",
               margin: "0 auto",
-              padding: "50px",
+              padding: "30px",
               boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-              width: "500px",
+              width: "400px",
               borderRadius: "50px",
             }}
           >
@@ -61,7 +62,7 @@ export default function Contactpage() {
               <div>
                 <h1
                   style={{
-                    fontSize: "40px",
+                    fontSize: "25px",
                     fontFamily: "sans-serif",
                     color: "purple",
                   }}

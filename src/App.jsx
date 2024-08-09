@@ -16,7 +16,6 @@ import PageError from "./Pages/404page";
 import Contactpage from "./Pages/Contactpage";
 import { AuthContext } from "./store/contexHook";
 import axios from "axios";
-import Admin_layouts from "./Components/layouts/admin_layouts";
 import AdminContact from "./Components/layouts/adminContact";
 import AdminUser from "./Components/layouts/adminUser";
 
@@ -30,7 +29,7 @@ function App() {
     setToken(servertoken);
     return localStorage.setItem("token", servertoken);
   };
-
+  let isAdmin = !!token && mydata.isAdmin;
   let loggedIn = !!token;
 
   const logout = () => {
@@ -63,7 +62,14 @@ function App() {
 
   return (
     <AuthContext.Provider
-      value={{ loggedIn, storeToken, logout, mydata, authorization }}
+      value={{
+        isAdmin,
+        loggedIn,
+        storeToken,
+        logout,
+        mydata,
+        authorization,
+      }}
     >
       <Router>
         <Navbar />
@@ -80,10 +86,9 @@ function App() {
           <Route path="/*" element={<PageError />} />
 
           {/* Nested Routes for Admin pannel */}
-          <Route path="/admin" element={<Admin_layouts />}>
-            <Route path="users" element={<AdminUser />} />
-            <Route path="contacts" element={<AdminContact />} />
-          </Route>
+
+          <Route path="/admin/users" element={<AdminUser />} />
+          <Route path="/admin/contacts" element={<AdminContact />} />
         </Routes>
       </Router>
     </AuthContext.Provider>

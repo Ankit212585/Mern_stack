@@ -38,6 +38,23 @@ export default function adminUser() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(
+        `http://localhost:5000/admin/contacts/delete/${id}`,
+        {
+          headers: {
+            Authorization: authorization,
+          },
+        }
+      );
+      const resp = await contact.filter((doc) => !doc == id);
+      setContact(resp);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     allUsers();
   }, []);
@@ -63,6 +80,7 @@ export default function adminUser() {
                 <Td>{data.messageBox}</Td>
                 <Td>
                   <MdDelete
+                    onClick={() => handleDelete(data._id)}
                     style={{ fontSize: "24px", color: "crimson" }}
                   />
                 </Td>

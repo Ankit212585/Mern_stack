@@ -4,15 +4,17 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/contexHook";
+import { Button } from "@chakra-ui/react";
 
 const Peragraph = styled.p`
-  font-size: 20px;
+  font-size: 1em;
 `;
 
 const Input = styled.input`
-  padding: 1em;
+  padding: 10px;
   border-radius: 10px;
   width: 280px;
+  border: 1px solid black;
 `;
 
 export default function Register() {
@@ -51,9 +53,9 @@ export default function Register() {
             style={{
               display: "block",
               margin: "0 auto",
-              padding: "50px",
+              padding: "30px",
               boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-              width: "500px",
+              width: "400px",
               borderRadius: "50px",
             }}
           >
@@ -62,12 +64,13 @@ export default function Register() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                flexWrap: "wrap",
               }}
             >
               <div>
                 <h1
                   style={{
-                    fontSize: "40px",
+                    fontSize: "25px",
                     fontFamily: "sans-serif",
                     color: "purple",
                   }}
@@ -118,11 +121,8 @@ export default function Register() {
                   />
 
                   <br />
-                  <button
+                  <Button
                     style={{
-                      padding: "10px",
-                      borderRadius: "5px",
-                      border: "none",
                       background: "purple",
                       color: "white",
                     }}
@@ -130,7 +130,7 @@ export default function Register() {
                     className="btn btn-submit"
                   >
                     Register Now
-                  </button>
+                  </Button>
                 </form>
               </div>
             </div>

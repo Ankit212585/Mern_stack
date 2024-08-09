@@ -72,7 +72,7 @@ export default function adminUser() {
               <Th>All Users</Th>
               <Th>Emails</Th>
               <Th>Numbers</Th>
-              <Th>Edit</Th>
+
               <Th>Delete</Th>
             </Tr>
           </Thead>
@@ -83,9 +83,7 @@ export default function adminUser() {
                   <Td>{data.username}</Td>
                   <Td>{data.email}</Td>
                   <Td>{data.Phone_Number}</Td>
-                  <Td>
-                    <FaUserEdit style={{ fontSize: "24px" }} />
-                  </Td>
+
                   <Td>
                     <MdDelete
                       onClick={() => handleDelete(data._id)}
